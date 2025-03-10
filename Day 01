@@ -1,0 +1,38 @@
+ques1 is ugly number 
+
+class Solution {
+public:
+    bool isUgly(int n) {
+        if(n==0) 
+        return false;
+        while(n%2==0) 
+        n=n/2;
+        while(n%3==0)
+        n/=3;
+        while(n%5==0)
+        n/=5;
+        if(n==1)
+        return true;
+        else return false;
+    }
+};
+//T.C= O(logn)
+//S.C= O(1)
+
+ques2 reverse bit 
+
+class Solution {
+  public:
+    long long reversedBits(long long x) {
+        long long result =0;
+        for(int i=0;i<32;i++){
+            long long bit=x &1;
+            result=(result<<1) | bit;
+            x>>=1;
+        }
+        return result;
+    }
+};
+
+//T.C=O(1)
+//S.C=O(1)
