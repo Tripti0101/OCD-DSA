@@ -1,0 +1,50 @@
+//ques1 Good/bad string
+
+bool isvowel(char ch){
+    string vow="aeiou";
+    for(int i=0;i<5;i++){
+        if (ch==vow[i]){
+        return 1; }
+    }
+    return 0;
+}
+class Solution {
+  public:
+    int isGoodorBad(string S) {
+         int vow=0,c=0;
+        for (int i=0;i<S.length();i++){
+            if (isvowel(S[i])){
+                c=0;
+                vow++;
+                if(S[i+1]=='?'){
+                    while(S[i+1]=='?'){
+                        vow++;
+                        i++;
+                    }
+}
+              if(vow>5){
+       return 0; }  
+            }
+           else {
+            c++;
+            vow=0;
+            if(S[i+1]=='?'){
+                    while(S[i+1]=='?'){
+                        c++;
+                        i++;
+                    }
+            }
+           if(c>3){
+       return 0;}  
+        }
+    }
+    return 1;
+}
+};
+
+//TC:O(N)
+//SC:O(1)
+
+//ques2 merging 2d arrays by summation 
+
+
