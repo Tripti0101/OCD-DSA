@@ -1,0 +1,38 @@
+ques1 count distinct numbers on board 
+
+class Solution {
+public:
+    int distinctIntegers(int n) {
+        if(n==1) 
+        return 1;
+        return n-1;
+    }
+};
+
+//T.C=O(1)
+//S.C=O(1)
+
+ques2 chocolate distribution
+
+class Solution {
+  public:
+    int findMinDiff(vector<int>& a, int m) {
+        sort(a.begin(),a.end());
+        int n=a.size();
+        if(m>n)
+        return -1;
+        int s=0;
+        int e=m-1;
+        int ans=INT_MAX;
+        while(e<n) {
+            int difference=a[e]-a[s];
+            ans=min(ans,difference);
+            s++;
+            e++;
+        }
+        return ans;
+    }
+};
+
+//T.C=O(nlogn)
+//S.C=O(1)
