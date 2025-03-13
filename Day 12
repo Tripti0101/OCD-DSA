@@ -1,0 +1,84 @@
+ques1 binary search 
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+         int i=0;
+      int j=nums.size()-1;
+      while(i<=j) {
+        int mid=i+(j-i)/2;
+        if(nums[mid]==target) {
+            return mid;
+        }
+        if(nums[mid]>target) {
+            j=mid-1;
+        }
+        else{
+            i=mid+1;
+        }
+      }
+      return -1;  
+    }
+};
+
+//T.C=O(logn)
+//S.C=O(1)
+
+ques2 search insert position 
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+         int i=0;
+        int j=nums.size()-1;
+        int ans=j+1;
+        while(i<=j) {
+            int mid=i+(j-i)/2;
+            if(nums[mid]>=target) {
+                ans=min(ans,mid);
+                j=mid-1;
+            }
+            else {
+                i=mid+1;
+            }
+        }
+        return ans;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
+
+ques3 first and last position of element in second array 
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int i=0;
+        vector<int> v(2,-1);
+        int j=nums.size()-1;
+        while(i<=j) {
+           if(nums[i]==target && nums[j]==target) {
+            v[0]=i;
+            v[1]=j;
+            return v;
+           }
+           else if(nums[i]==target && nums[j]!=target) {
+            v[0]=i;
+            j--;
+           }
+            else if(nums[j]==target && nums[i]!=target) {
+            v[1]=j;
+            i++;
+           }
+           else {
+            i++;
+            j--;
+           }
+        }
+        return v;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
