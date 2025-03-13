@@ -1,0 +1,47 @@
+ques1 most visited sector in a circular track 
+
+class Solution {
+public:
+    vector<int> mostVisited(int n, vector<int>& rounds) {
+         int start=rounds[0], end=rounds.back();
+    vector<int> result;
+
+    if (start <= end) {
+        for (int i=start; i<=end; i++) {
+            result.push_back(i);
+        }
+    } else {
+        for (int i=1; i<=end; i++) {
+            result.push_back(i);
+        }
+        for (int i=start; i<=n; i++) {
+            result.push_back(i);
+        }
+    }
+    return result;
+}
+};
+
+//T.C=O(n)
+//S.C=O(n)
+
+ques2 stock span problem 
+
+class Solution {
+  public:
+    vector<int> calculateSpan(vector<int>& arr) {
+        vector<int> res;
+        res.push_back(1);
+         for (int i = 1; i < arr.size(); i++) {
+             int j = i - 1;
+              while (j >= 0 && arr[i] >= arr[j]) {  
+                   j = j - res[j];
+              }
+               res.push_back(i - j);
+          }
+          return res;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
