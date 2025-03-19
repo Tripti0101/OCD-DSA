@@ -1,0 +1,51 @@
+ques1 isomorphic strings
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        if (s.length() != t.length()) 
+        return false;
+        int s_char[256]={0};
+        int t_char[256]={0};
+        for (int i=0; i<s.length(); ++i) {
+            if (s_char[s[i]] != t_char[t[i]])
+                return false;
+            s_char[s[i]]=i+1;
+            t_char[t[i]]=i+1;
+        }
+        return true;
+    }
+};
+
+// T.C=O(N)
+// S.C=O(1)
+
+ques2 remove outercase parentheses
+
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        if(s.size()==0)
+         return s;
+        int count=0;
+        string ans="";
+        for(int i=0; i<s.size(); i++){
+            if(s[i]=='('){
+                if(count>0){
+                    ans+=s[i];
+                }
+                count++;
+            } 
+            else if(s[i]==')'){
+                count--;
+                if(count>0){
+                    ans+=s[i];
+                }
+            } 
+        }
+        return ans;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
