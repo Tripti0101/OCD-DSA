@@ -1,0 +1,55 @@
+ques1 maximum nesting depth of the parentheses 
+
+class Solution {
+public:
+    int maxDepth(string s) {
+        int maxp=0;
+        int count=0;
+        for(int i=0; i<s.length(); i++) {
+            if(s[i]=='(') {
+                count++; }
+            else if(s[i]==')') {
+                maxp=max(count, maxp);
+                count--;
+            }
+        }
+        return maxp;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
+
+ques2 roman to integer 
+
+class Solution {
+public:
+    int priority(char ch) {
+        if(ch=='I') 
+         return 1;
+        if(ch=='V') 
+         return 5;
+        if(ch=='X') 
+         return 10;
+        if(ch=='L') 
+         return 50;
+        if(ch=='C')
+         return 100;
+        if(ch=='D')
+         return 500;
+        return 1000;
+    }
+    int romanToInt(string s) {
+        int x=0;
+        if(s.size()==1) return priority(s[0]);
+        for(int i=0;i<s.size()-1;i++) {
+           if(priority(s[i])<priority(s[i+1])) x-=priority(s[i]);
+           else x+=priority(s[i]);
+        }
+        if(s.size()>1) x+=priority(s[s.size()-1]);
+        return x;
+    }
+};
+
+//T.C=O(n)
+//S.C=O(1)
